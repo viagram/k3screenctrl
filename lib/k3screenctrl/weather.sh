@@ -101,7 +101,7 @@ TYPE=`echo $weather_json | jq ".data.forecast[0].type" | sed 's/"//g'`
 if [ "$update_weather" = "1" ]; then
 	city_name=$(encodeurl $city)
 	rm -rf /tmp/k3-weather.json
-	wget "http://api.seniverse.com/v3/weather/now.json?key=smtq3n0ixdggurox&location=$city_name&language=zh-Hans&unit=c" -T 3 -O /tmp/k3-weather.json 2>/dev/null
+	wget "http://api.seniverse.com/v3/weather/now.json?key=SBAMILFcHg8lSO9YV&location=$city_name&language=zh-Hans&unit=c" -T 3 -O /tmp/k3-weather.json 2>/dev/null
 fi
 
 weather_json=$(cat /tmp/k3-weather.json 2>/dev/null)
