@@ -61,7 +61,7 @@ if [ "$city_checkip" = "1" ]; then
 		wan_city=`curl --connect-timeout 3 -s http://pv.sohu.com/cityjson | awk -F"=" '{print $2}' | sed 's/;//g'`
 		wanip=`echo $wan_city | jq ".cip" | sed 's/"//g'`
 		city_json=`curl --connect-timeout 3 -s https://dnsdian.com/api/iptocity.php?ip=$wanip`
-		ip_city=`echo $city_json | awk -F '|' '{print $4}' | sed 's/"//g'`
+		city=`echo $city_json | awk -F '|' '{print $4}' | sed 's/"//g'`
 		echo $city > /tmp/weather_city
 		uci set k3screenctrl.@general[0].city=$city
 		uci commit k3screenctrl
@@ -110,6 +110,3 @@ echo $DATE_TIME
 echo $TYPE
 echo $DATE_WEEK
 echo 0
-
-
-
